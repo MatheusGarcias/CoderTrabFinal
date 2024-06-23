@@ -1,0 +1,43 @@
+Documentação 
+
+	Objetivo
+O objetivo deste código é realizar requisições a diferentes APIs públicas, extrair os dados, armazená-los em dataframes e, em seguida, salvar esses dados em bancos de dados SQLite.
+
+	Parâmetros
+url: URL da API de Bancos.
+url_cnpj: URL da API de CNPJ.
+url_ncm: URL da API de NCM.
+
+	Retorno
+Dataframes contendo os dados das APIs.
+Notificações em caso de sucesso nas requisições.
+Bancos de dados SQLite com tabelas preenchidas pelos dataframes.
+
+
+	Descrição
+O código é dividido em várias seções principais:
+
+Instalação de Dependências:
+Usa %pip install plyer para instalar a biblioteca plyer, que é usada para notificações.
+
+
+Requisição à API de Bancos:
+Faz uma requisição GET para a API https://brasilapi.com.br/api/banks/v1 e verifica o status da resposta.
+Se a requisição for bem-sucedida, os dados são extraídos e notificados via plyer.notification.
+Os dados são então armazenados em um dataframe do pandas.
+
+
+Requisição à API de CNPJ:
+Faz uma requisição GET para a API https://brasilapi.com.br/api/cnpj/v1/02373517000313 e verifica o status da resposta.
+Se a requisição for bem-sucedida, os dados são extraídos e notificados via plyer.notification.
+Um dataframe é criado a partir dos dados do CNPJ e colunas específicas são extraídas para criar um novo dataframe.
+
+
+Requisição à API de NCM:
+Faz uma requisição GET para a API https://brasilapi.com.br/api/ncm/v1 e verifica o status da resposta.
+Se a requisição for bem-sucedida, os dados são extraídos e notificados via plyer.notification.
+Os dados são armazenados em um dataframe do pandas.
+
+Armazenamento dos Dados em SQLite:
+Conecta-se a bancos de dados SQLite e salva os dataframes criados nas etapas anteriores em tabelas dentro desses bancos de dados.
+
